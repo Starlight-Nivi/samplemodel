@@ -1,0 +1,25 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches:
+      - main  # This means the pipeline will run when changes are pushed to the 'main' branch.
+
+jobs:
+  build:
+    runs-on: ubuntu-latest  # Runs on an Ubuntu machine
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2  # This checks out your code so that it can be built/tested
+
+    - name: Set up Node.js (example for Node.js projects)
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14'  # Specify the Node.js version you're using
+
+    - name: Install dependencies
+      run: npm install  # This installs the necessary dependencies for your project
+
+    - name: Run Tests
+      run: npm test  # This runs your tests. Replace with your test command if needed.
